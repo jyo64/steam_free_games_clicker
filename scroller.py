@@ -84,6 +84,11 @@ while True:
         print("Clicking the Add to Library button")
         driver.execute_script("arguments[0].click();", add_to_library_button)
         time.sleep(3)
+
+        with open('blacklist.txt', 'a') as f:
+            f.write(driver.current_url + '\n')
+        driver.get(website)
+
     except:
         print("Error: Could not find the Add to Library button")
         with open('blacklist.txt', 'a') as f:
