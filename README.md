@@ -31,5 +31,11 @@ This Python script helps you find free games on Steam and automatically adds the
     pip install -r requirements.txt
     ```
 
+### Run the code
+
+1. **Run the script**:
+    ```sh
+    python scroller.py
+    ```
 The current script is currently designed to run based on firefox, but you can modify the code to use Chrome or any other browser as needed.
 You're all set! 🎉 Now you can run the script and enjoy your free games! 🕹️
