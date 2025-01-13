@@ -9,6 +9,8 @@ website = "https://store.steampowered.com/search/?category1=998&genre=Free%20to%
 # Set up Firefox options
 options = Options()
 options.add_argument("-profile")
+
+# Modify the path to the Firefox profile in your system
 options.add_argument("/home/jyo/.mozilla/firefox/iee0ubgb.default-release/")
 
 # Add user login info
@@ -29,9 +31,9 @@ while True:
     app_links = driver.find_elements(By.XPATH, "//a[starts-with(@href, 'https://store.steampowered.com/app/')]")
 
 
-
+    print("Processing App Links")
     for link in app_links:
-        print("Processing:", link.get_attribute('href'))
+        # print("Processing:", link.get_attribute('href'))
         blacklist = []
         with open('blacklist.txt', 'r') as f:
             blacklist = f.readlines()
@@ -46,7 +48,6 @@ while True:
         if current_link not in blacklist:
             break
         else:
-            print("Skipping:", current_link)
             continue
 
 
@@ -54,7 +55,7 @@ while True:
 
     driver.get(current_link)
 
-    time.sleep(10)
+    time.sleep(3)
 
     if driver.current_url.startswith("https://store.steampowered.com/agecheck/app/"):
         try:
@@ -64,7 +65,7 @@ while True:
             # Click the button
             print("Clicking the View Page button")
             driver.execute_script("arguments[0].click();", view_page_button)
-            time.sleep(5)
+            time.sleep(3)
         except:
             print("Error: Could not find the View Page button")
             with open('blacklist.txt', 'a') as f:
@@ -82,7 +83,7 @@ while True:
         # Click the button
         print("Clicking the Add to Library button")
         driver.execute_script("arguments[0].click();", add_to_library_button)
-        time.sleep(5)
+        time.sleep(3)
     except:
         print("Error: Could not find the Add to Library button")
         with open('blacklist.txt', 'a') as f:

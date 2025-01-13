@@ -37,5 +37,8 @@ This Python script helps you find free games on Steam and automatically adds the
     ```sh
     python scroller.py
     ```
+
+⚠️ Make Sure to set your correct profile and right path for firefox in the script.⚠️
+
 The current script is currently designed to run based on firefox, but you can modify the code to use Chrome or any other browser as needed.
 You're all set! 🎉 Now you can run the script and enjoy your free games! 🕹️
