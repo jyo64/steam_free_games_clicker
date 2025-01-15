@@ -9,7 +9,7 @@ website = "https://store.steampowered.com/search/?category1=998&genre=Free%20to%
 # Set up Firefox options
 options = Options()
 options.add_argument("-profile")
-
+options.page_load_strategy = 'eager'
 # Modify the path to the Firefox profile in your system
 options.add_argument("/home/jyo/.mozilla/firefox/iee0ubgb.default-release/")
 
@@ -54,8 +54,14 @@ while True:
     print("Going to:", current_link)
 
     driver.get(current_link)
-
     time.sleep(3)
+    try:
+        driver.execute_script("return window.stop();")
+    except:
+        print("Error: Could not stop the page load")
+
+
+    time.sleep(1)
 
     if driver.current_url.startswith("https://store.steampowered.com/agecheck/app/"):
         try:
